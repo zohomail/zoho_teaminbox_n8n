@@ -1,0 +1,285 @@
+{
+    "type": "object",
+    "properties": {
+      "data": {
+        "type": "object",
+        "properties": {
+          "updatedTime": {
+            "type": "string"
+          },
+          "read": {
+            "type": "boolean"
+          },
+          "threadCount": {
+            "type": "number"
+          },
+          "messageId": {
+            "type": "string"
+          },
+          "entityId": {
+            "type": "string"
+          },
+          "snoozed": {
+            "type": "boolean"
+          },
+          "type": {
+            "type": "string"
+          },
+          "tdetails": {
+            "type": "object",
+            "properties": {
+              "RR": {
+                "type": "number"
+              },
+              "MSGINTEG": {
+                "type": "object",
+                "properties": {},
+                "required": []
+              },
+              "HASINLINE": {
+                "type": "boolean"
+              },
+              "NT": {
+                "type": "number"
+              },
+              "MAILID": {
+                "type": "string"
+              },
+              "PRIORITY": {
+                "type": "number"
+              },
+              "FROM": {
+                "type": "string"
+              },
+              "M": {
+                "type": "string"
+              },
+              "REPLYTO": {
+                "type": "string"
+              },
+              "SPAMDATA": {
+                "type": "object",
+                "properties": {
+                  "ISAUTH": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "ISAUTH"
+                ]
+              },
+              "ISAUTH": {
+                "type": "boolean"
+              },
+              "XFORWARDEDTO": {
+                "type": "string"
+              },
+              "R": {
+                "type": "string"
+              },
+              "DELIVEREDTO": {
+                "type": "string"
+              },
+              "MA": {
+                "type": "number"
+              },
+              "SENTTIME": {
+                "type": "string"
+              },
+              "CONTENT": {
+                "type": "string"
+              },
+              "SENDMAILTYPE": {
+                "type": "number"
+              },
+              "UUID": {
+                "type": "string"
+              },
+              "CID": {
+                "type": "string"
+              },
+              "CC": {
+                "type": "string"
+              },
+              "REPLYCC": {
+                "type": "string"
+              },
+              "BCC": {
+                "type": "string"
+              },
+              "RDT": {
+                "type": "string"
+              },
+              "SENTTIMEINMILLIS": {
+                "type": "string"
+              },
+              "FOLDERNAME": {
+                "type": "string"
+              },
+              "SENDER": {
+                "type": "string"
+              },
+              "INREPLYTO": {
+                "type": "string"
+              },
+              "STATUS2ID": {
+                "type": "number"
+              },
+              "CALTYPE": {
+                "type": "number"
+              },
+              "TID": {
+                "type": "string"
+              },
+              "SHOWDISPLAYNAME": {
+                "type": "boolean"
+              },
+              "SHRINKED": {
+                "type": "boolean"
+              },
+              "CT": {
+                "type": "number"
+              },
+              "accountId": {
+                "type": "string"
+              },
+              "REPLYFROM": {
+                "type": "string"
+              },
+              "SUBJECT": {
+                "type": "string"
+              },
+              "TO": {
+                "type": "string"
+              },
+              "SMT": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "RR",
+              "MSGINTEG",
+              "HASINLINE",
+              "NT",
+              "MAILID",
+              "PRIORITY",
+              "FROM",
+              "M",
+              "REPLYTO",
+              "SPAMDATA",
+              "ISAUTH",
+              "XFORWARDEDTO",
+              "R",
+              "DELIVEREDTO",
+              "MA",
+              "SENTTIME",
+              "CONTENT",
+              "SENDMAILTYPE",
+              "UUID",
+              "CID",
+              "CC",
+              "REPLYCC",
+              "BCC",
+              "RDT",
+              "SENTTIMEINMILLIS",
+              "FOLDERNAME",
+              "SENDER",
+              "INREPLYTO",
+              "STATUS2ID",
+              "CALTYPE",
+              "TID",
+              "SHOWDISPLAYNAME",
+              "SHRINKED",
+              "CT",
+              "accountId",
+              "REPLYFROM",
+              "SUBJECT",
+              "TO",
+              "SMT"
+            ]
+          },
+          "archived": {
+            "type": "boolean"
+          },
+          "hasAttch": {
+            "type": "boolean"
+          },
+          "sender": {
+            "type": "string"
+          },
+          "following": {
+            "type": "boolean"
+          },
+          "teamId": {
+            "type": "string"
+          },
+          "createdTime": {
+            "type": "string"
+          },
+          "from": {
+            "type": "string"
+          },
+          "time": {
+            "type": "string"
+          },
+          "assignee": {
+            "type": "string"
+          },
+          "newChannelId": {
+            "type": "string"
+          },
+          "inboxId": {
+            "type": "string"
+          },
+          "drafted": {
+            "type": "boolean"
+          },
+          "channelId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "updatedTime",
+          "read",
+          "threadCount",
+          "messageId",
+          "entityId",
+          "snoozed",
+          "type",
+          "tdetails",
+          "archived",
+          "hasAttch",
+          "sender",
+          "following",
+          "teamId",
+          "createdTime",
+          "from",
+          "time",
+          "assignee",
+          "newChannelId",
+          "inboxId",
+          "drafted",
+          "channelId"
+        ]
+      },
+      "status": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "number"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "description"
+        ]
+      }
+    },
+    "required": [
+      "data",
+      "status"
+    ]
+  }

@@ -1,0 +1,35 @@
+{
+    "type": "object",
+    "properties": {
+      "data": {
+        "type": "object",
+        "properties": {
+          "contact_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "contact_id"
+        ]
+      },
+      "status": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "number"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "description"
+        ]
+      }
+    },
+    "required": [
+      "data",
+      "status"
+    ]
+  }
