@@ -44,6 +44,7 @@ export async function zohoteaminboxApiRequest(
 ) {
 	const { oauthTokenData } = await this.getCredentials<ZohoTeamInboxOAuth2ApiCredentials>('zohoTeamInboxOAuth2Api');
 	const options: IRequestOptions = {
+		headers: {"user-agent": "n8n zohoteaminbox"},
 		body: body,
 		method,
 		qs,
