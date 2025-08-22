@@ -7,7 +7,7 @@ export class ZohoTeamInboxOAuth2Api implements ICredentialType {
 
 	displayName = 'Zoho TeamInbox OAuth2 API';
 
-	documentationUrl = 'zohoteaminbox';
+	documentationUrl = 'https://www.zoho.com/teaminbox/help/integration-with-n8n.html';
 
 	properties: INodeProperties[] = [
 		{
