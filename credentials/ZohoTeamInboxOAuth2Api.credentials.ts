@@ -108,7 +108,7 @@ export class ZohoTeamInboxOAuth2Api implements ICredentialType {
 			displayName: 'Auth URI Query Parameters',
 			name: 'authQueryParameters',
 			type: 'hidden',
-			default: 'access_type=offline',
+			default: 'access_type=offline&prompt=consent',
 		},
 		{
 			displayName: 'Authentication',
