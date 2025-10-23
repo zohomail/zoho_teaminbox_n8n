@@ -5,9 +5,9 @@ import {
 	ILoadOptionsFunctions,
 	JsonObject,
 	IHttpRequestMethods,
-	IRequestOptions,
+	IHttpRequestOptions,
 	NodeOperationError,
-	NodeApiError
+	NodeApiError,
 } from 'n8n-workflow';
 import {
 	ZohoTeamInboxOAuth2ApiCredentials,
@@ -40,15 +40,15 @@ export async function zohoteaminboxApiRequest(
 	endpoint: string,
 	body: IDataObject = {},
 	qs: IDataObject = {},
-	uri?: string,
+	url?: string,
 ) {
 	const { oauthTokenData } = await this.getCredentials<ZohoTeamInboxOAuth2ApiCredentials>('zohoTeamInboxOAuth2Api');
-	const options: IRequestOptions = {
+	const options: IHttpRequestOptions = {
 		headers: {"user-agent": "n8n zohoteaminbox"},
 		body: body,
 		method,
 		qs,
-		uri: `https://teaminbox.${getDomain(oauthTokenData.api_domain)}/${endpoint}`,
+		url: `https://teaminbox.${getDomain(oauthTokenData.api_domain)}/${endpoint}`,
 		json: true,
 	};
 	if (!Object.keys(body).length) {
@@ -59,7 +59,7 @@ export async function zohoteaminboxApiRequest(
 		delete options.qs;
 	}
 	try {
-		const responseData = await this.helpers.requestOAuth2?.call(this, 'zohoTeamInboxOAuth2Api', options);
+		const responseData = await this.helpers.httpRequestWithAuthentication?.call(this, 'zohoTeamInboxOAuth2Api', options);
 		if (responseData === undefined) return [];
 	    throwOnErrorStatus.call(this, responseData as IDataObject);
 		return responseData;
@@ -197,5 +197,4 @@ export function getDomain(domain: string): string | undefined {
         }
     }
     return undefined;
-}	
-  
+}

@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-zohoteaminbox",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "This is an n8n community node. It lets you use Zoho TeamInbox in your n8n workflows.",
   "keywords": [
     "n8n-community-node-package",
@@ -22,7 +22,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "build": "gulp build:icons",
+    "build": "tsc && gulp build:icons",
     "dev": "tsc --watch",
     "format": "prettier nodes credentials --write",
     "lint": "eslint nodes credentials package.json",
@@ -47,12 +47,14 @@
     "@typescript-eslint/parser": "^5.36",
     "eslint-plugin-n8n-nodes-base": "^1.11.0",
     "gulp": "^4.0.2",
-    "n8n-core": "*",
-    "n8n-workflow": "*",
     "prettier": "^2.7.1",
     "tslint": "^6.1.2",
     "typescript": "~4.8.4"
   },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  },
+
   "bugs": {
     "url": "https://github.com/zohomail/zoho_teaminbox_n8n/issues"
   }
