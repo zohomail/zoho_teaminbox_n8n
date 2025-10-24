@@ -21,14 +21,15 @@ import {
 export function throwOnErrorStatus(
 	this: IExecuteFunctions | IHookFunctions | ILoadOptionsFunctions,
 	responseData: {
-		error?: { error_description?: string },
-		status?: { code: number };
+		error?: {
+			error_description?: string;
+			error_code?: string;
+		};
 	}
 ): void {
-	const errorCode = responseData.status?.code;
+	const errorCode = responseData.error?.error_code;
 	const errorDescription = responseData.error?.error_description;
-
-	if ( errorCode !== 200 && (errorCode || errorDescription)) {
+	if ( errorCode || errorDescription) {
 		const fullMessage = errorCode ? `${errorCode}: ${errorDescription ?? 'Zoho TeamInbox Internal error'}` : errorDescription ?? 'Zoho TeamInbox Internal error';
 		throw new NodeOperationError(this.getNode(), fullMessage);
 	}
@@ -59,14 +60,14 @@ export async function zohoteaminboxApiRequest(
 		delete options.qs;
 	}
 	try {
-		const responseData = await this.helpers.httpRequestWithAuthentication?.call(this, 'zohoTeamInboxOAuth2Api', options);
+		const responseData = await this.helpers.requestOAuth2?.call(this, 'zohoTeamInboxOAuth2Api', options);
 		if (responseData === undefined) return [];
 	    throwOnErrorStatus.call(this, responseData as IDataObject);
 		return responseData;
 	} catch (error) {
 		const args = error ? {
 			message: error.error?.error?.error_description ?? 'The Zoho TeamInbox API returned an error',
-			description: error.error?.status?.description ?? 'No additional information provided.',
+			description: error.error?.error?.error_code ?? 'No additional information provided.',
 		} : undefined;
 		throw new NodeApiError(this.getNode(), error as JsonObject, args);
 	}
@@ -197,4 +198,4 @@ export function getDomain(domain: string): string | undefined {
         }
     }
     return undefined;
-}
+}	

@@ -155,22 +155,19 @@ export class ZohoTeamInbox implements INodeType {
                         responseData = await zohoteaminboxApiRequest.call(this, 'POST', `api/workspaces/${this.getNodeParameter('workspaceid', i)}/teams/${this.getNodeParameter('teamid', i)}/contacts`,body ,{});
 						responseData = responseData.data;
                     }
+                }	
+            }
+			catch (error) {
+				if (this.continueOnFail()) {
+                    returnData.push({ error: error.error_description, json: {} });
+                    continue;
                 }
-				const executionData = this.helpers.constructExecutionMetaData(
+                throw error;
+            }
+			const executionData = this.helpers.constructExecutionMetaData(
 		        this.helpers.returnJsonArray(responseData as IDataObject),
 		        { itemData: { item: i } }, );
 	            returnData.push(...executionData);
-            }
-			catch (error) {
-	           if (this.continueOnFail()) {
-		            returnData.push({
-			            json: { error: error.error_description },
-			            pairedItem: { item: i },
-		            });
-		            continue;
-	            }
-	            throw error; 
-            } 
 		}
 		return [returnData];          
     }
